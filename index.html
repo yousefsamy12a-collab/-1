@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>PDF Code Unlock</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 100px;
+      background-color: #f0f0f0;
+    }
+    input[type="text"] {
+      padding: 10px;
+      font-size: 16px;
+      width: 200px;
+    }
+    button {
+      padding: 10px 15px;
+      font-size: 16px;
+      margin-left: 10px;
+      cursor: pointer;
+    }
+    #message {
+      margin-top: 20px;
+      font-size: 18px;
+    }
+    a {
+      color: green;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h2>🔓 Enter your code to access the PDF</h2>
+  <input type="text" id="codeInput" placeholder="Enter code here">
+  <button onclick="checkCode()">Unlock PDF</button>
+  <div id="message"></div>
+
+  <script>
+    function checkCode() {
+      const code = document.getElementById("codeInput").value.trim();
+      const messageDiv = document.getElementById("message");
+
+      // Map of codes to PDF URLs
+      const codeMap = {
+        "1234": "https://docs.google.com/document/d/155Y7ypqp_hXWCpBlB8A-BZly2glGtZY7U_M7sm_Q-EA/edit?usp=drive_link"
+      };
+
+      if (codeMap[code]) {
+        messageDiv.innerHTML = `✅ Correct! <a href="${codeMap[code]}" target="_blank">Click here to open your PDF</a>`;
+        messageDiv.style.color = "green";
+      } else {
+        messageDiv.innerHTML = "❌ Wrong code, try again.";
+        messageDiv.style.color = "red";
+      }
+    }
+  </script>
+</body>
+</html>
